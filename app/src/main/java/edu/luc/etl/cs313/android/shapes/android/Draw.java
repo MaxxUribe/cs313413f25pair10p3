@@ -71,7 +71,7 @@ public class Draw implements Visitor<Void> {
     @Override
     public Void onOutline(Outline o) {
         final Style oldStyle = paint.getStyle();
-        paint.getStyle(Style.STROKE);
+        paint.setStyle(Style.STROKE);
         o.getShape().accept(this);
         paint.setStyle(oldStyle);
         return null;
