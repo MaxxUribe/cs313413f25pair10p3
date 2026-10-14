@@ -30,7 +30,10 @@ public class Draw implements Visitor<Void> {
 
     @Override
     public Void onStrokeColor(final StrokeColor c) {
-        canvas.drawCircle(0, 0, c.getRadius(), paint);
+        final int oldColor = paint.getColor();
+        paint.setColor(c.getColor());
+        c.getShape().accept(this);
+        paint.setColor(oldColor);
         return null;
     }
 
