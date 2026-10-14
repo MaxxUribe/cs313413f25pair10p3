@@ -17,8 +17,8 @@ public class Draw implements Visitor<Void> {
     private final Paint paint;
 
     public Draw(final Canvas canvas, final Paint paint) {
-        this.canvas = null; // FIXME
-        this.paint = null; // FIXME
+        this.canvas = canvas;
+        this.paint = paint;
         paint.setStyle(Style.STROKE);
     }
 
@@ -30,7 +30,7 @@ public class Draw implements Visitor<Void> {
 
     @Override
     public Void onStrokeColor(final StrokeColor c) {
-
+        canvas.drawCircle(0, 0, c.getRadius(), paint);
         return null;
     }
 
