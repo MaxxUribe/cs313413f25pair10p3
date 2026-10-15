@@ -11,7 +11,7 @@ android {
     buildToolsVersion "36.0.0"
 
     defaultConfig {
-        applicationId "edu.luc.etl.cs313.android.shapes"
+        applicationId "edu.luc.etl.cs313.xandroid.shapes"
         minSdkVersion 23
         targetSdkVersion 36
         versionCode 1
