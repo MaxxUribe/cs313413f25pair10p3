@@ -49,7 +49,6 @@ public class BoundingBox implements Visitor<Location> {
 
     @Override
     public Location onStrokeColor(final StrokeColor c) {
-
         return c.getShape().accept(this);
     }
 

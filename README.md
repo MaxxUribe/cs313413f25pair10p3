@@ -26,7 +26,7 @@ In IntelliJ: `Run > Run app`
 
 ## Unit tests (there are no Android tests for shapes)
 
-In IntelliJ's Project view:
+In IntelliJ's Project view: 
 
 * right-click on `app/java/edu...shapes test (unitTest)`, then choose `Run Tests in shapes...`
 
