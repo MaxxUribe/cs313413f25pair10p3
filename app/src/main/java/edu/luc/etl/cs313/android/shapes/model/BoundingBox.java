@@ -7,7 +7,6 @@ package edu.luc.etl.cs313.android.shapes.model;
  */
 public class BoundingBox implements Visitor<Location> {
 
-    // TODO entirely your job (except onCircle)
 
     @Override
     public Location onCircle(final Circle c) {
@@ -17,20 +16,30 @@ public class BoundingBox implements Visitor<Location> {
 
     @Override
     public Location onFill(final Fill f) {
-
         return f.getShape().accept(this);
     }
 
     @Override
     public Location onGroup(final Group g) {
-
-        return null;
+        int minX = Integer.MAX_VALUE;
+        int minY = Integer.MAX_VALUE;
+        int maxX = Integer.MIN_VALUE;
+        int maxY = Integer.MIN_VALUE;
+        for (final Shape s : g.getShapes()) {
+            final Location b = s.accept(this);
+            final Rectangle r = (Rectangle) b.getShape();
+            minX = Math.min(minX, b.getX());
+            minY = Math.min(minY, b.getY());
+            maxX = Math.max(maxX, b.getX() + r.getWidth());
+            maxY = Math.max(maxY, b.getY() + r.getHeight());
+        }
+        return new Location(minX, minY, new Rectangle(maxX - minX, maxY - minY));
     }
 
     @Override
     public Location onLocation(final Location l) {
-
-        return null;
+        final Location b = l.getShape().accept(this);
+        return new Location(l.getX() + b.getX(), l.getY() + b.getY(), b.getShape());
     }
 
     @Override
